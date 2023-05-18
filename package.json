@@ -5,12 +5,13 @@
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
+    "android-build": "cd android && ./gradlew app:assembleDebug",
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "6.7.3",
-    "@react-native-firebase/app": "^17.4.3",
+    "@react-native-firebase/app": "^17.5.0",
     "@react-native-firebase/database": "^17.4.3",
     "@react-native-firebase/messaging": "^17.5.0",
     "@react-navigation/bottom-tabs": "^6.5.7",
@@ -25,7 +26,6 @@
     "react-native-dropdown": "^0.0.6",
     "react-native-dropdown-picker": "^5.4.6",
     "react-native-gesture-handler": "^2.9.0",
-    "react-native-push-notification": "^8.1.1",
     "react-native-reanimated": "~2.14.4",
     "react-native-safe-area-context": "4.5.0"
   },

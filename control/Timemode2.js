@@ -234,7 +234,7 @@ const TimePicker = () => {
       					<Text style={ SettingStyles.t}>เวลาเปิด</Text>
                 <View>
           </View>
-          <Text style={ SettingStyles.t}>{day1}</Text>
+          {/* <Text style={ SettingStyles.t}>{day1}</Text> */}
     				</SafeAreaView>
 
 					<SafeAreaView style={ SettingStyles.itemsminandmax}>

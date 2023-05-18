@@ -36,29 +36,18 @@ import messaging from '@react-native-firebase/messaging';
 
 export default function App() {
 
-	// useEffect(() => {
+	//
 	// 	const requestUserPermission = async () => {
-	// 	  const authStatus = await messaging().requestPermission();
-	// 	  const enabled =
-	// 		authStatus === messaging.AuthorizationStatus.AUTHORIZED;
+		// const authStatus = await messaging().requestPermission();
+		// const enabled =
+		// authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+		// authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+		// if (enabled) {
+		// 	console.log('Authorization status:', authStatus);
+		// }
+	//} 	  
 	  
-	// 	  if (enabled) {
-	// 		console.log('Authorization status:', authStatus);
-	// 	  }
-	// 	};
-	  
-	// 	const unsubscribe = messaging().onMessage(async remoteMessage => {
-	// 	  Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage), [
-	// 		{ text: 'OK', onPress: () => console.log('OK Pressed') },
-	// 	  ]);
-	// 	});
-	  
-	// 	requestUserPermission();
-	  
-	// 	return () => {
-	// 	  unsubscribe();
-	// 	};
-	//   }, []);
 	  
 	  
   const MainControl = () => {
