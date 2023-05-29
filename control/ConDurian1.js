@@ -111,8 +111,17 @@ useEffect(() => {
 		   >
 			   
 			   <View style={styles.viewImgTextContainer}>
-				   <Text style={styles.buttonText}>{mode}</Text>
-			   </View>
+				{mode === 'Normal mode' && (
+					<Text style={styles.buttonText}>โหมดปกติ</Text>
+				)}
+				{mode === 'Time mode' && (
+					<Text style={styles.buttonText}>โหมดตั้งเวลา</Text>
+				)}
+				{mode === 'Sensor mode' && (
+					<Text style={styles.buttonText}>โหมดเซ็นเซอร์</Text>
+				)}
+				</View>
+
 		   </TouchableHighlight>
 
 		   <TouchableHighlight

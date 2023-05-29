@@ -51,12 +51,12 @@ export default function SetDurian3({ navigation }) {
 				
 					<View style={{ flexDirection: 'row' }}>
 					<SafeAreaView style={[styles.itemsminandmax]} >
-						<Text style={[styles.text2]}>min</Text>
+						<Text style={[styles.text2]}>ต่ำสุด</Text>
       					<Text style={[styles.text2]}>25 %</Text>
 						
     				</SafeAreaView>
 					<SafeAreaView style={[styles.itemsminandmax]}>
-						<Text style={[styles.text2]}>max</Text>
+						<Text style={[styles.text2]}>สุงสุด</Text>
       					<Text style={[styles.text2]}>35 %</Text>
     				</SafeAreaView>
 					</View>
@@ -83,12 +83,12 @@ export default function SetDurian3({ navigation }) {
 				
 					<View style={{ flexDirection: 'row' }}>
 					<SafeAreaView style={[styles.itemsminandmax]} >
-						<Text style={[styles.text2]}>min</Text>
+						<Text style={[styles.text2]}>ต่ำสุด</Text>
       					<Text style={[styles.text2]}>25 %</Text>
 						
     				</SafeAreaView>
 					<SafeAreaView style={[styles.itemsminandmax]}>
-						<Text style={[styles.text2]}>max</Text>
+						<Text style={[styles.text2]}>สุงสุด</Text>
       					<Text style={[styles.text2]}>35 %</Text>
     				</SafeAreaView>
 					</View>
@@ -114,12 +114,12 @@ export default function SetDurian3({ navigation }) {
 				
 					<View style={{ flexDirection: 'row' }}>
 					<SafeAreaView style={[styles.itemsminandmax]} >
-						<Text style={[styles.text2]}>min</Text>
+						<Text style={[styles.text2]}>ต่ำสุด</Text>
       					<Text style={[styles.text2]}>25 °C</Text>
 						
     				</SafeAreaView>
 					<SafeAreaView style={[styles.itemsminandmax]}>
-						<Text style={[styles.text2]}>max</Text>
+						<Text style={[styles.text2]}>สุงสุด</Text>
       					<Text style={[styles.text2]}>35 °C</Text>
     				</SafeAreaView>
 					</View>
@@ -148,12 +148,12 @@ export default function SetDurian3({ navigation }) {
 				
 					<View style={{ flexDirection: 'row' }}>
 					<SafeAreaView style={[styles.itemsminandmax]} >
-						<Text style={[styles.texttt1]}>min</Text>
+						<Text style={[styles.texttt1]}>ต่ำสุด</Text>
       					<Text style={[styles.texttt1]}>25 °C</Text>
 						
     				</SafeAreaView>
 					<SafeAreaView style={[styles.itemsminandmax]}>
-						<Text style={[styles.texttt1]}>max</Text>
+						<Text style={[styles.texttt1]}>สุงสุด</Text>
       					<Text style={[styles.texttt1]}>35 °C</Text>
     				</SafeAreaView>
 					</View>
@@ -180,12 +180,12 @@ export default function SetDurian3({ navigation }) {
 				
 					<View style={{ flexDirection: 'row' }}>
 					<SafeAreaView style={[styles.itemsminandmax]} >
-						<Text style={[styles.texttt1]}>min</Text>
+						<Text style={[styles.texttt1]}>ต่ำสุด</Text>
       					<Text style={[styles.texttt1]}>25 Lux</Text>
 						
     				</SafeAreaView>
 					<SafeAreaView style={[styles.itemsminandmax]}>
-						<Text style={[styles.texttt1]}>max</Text>
+						<Text style={[styles.texttt1]}>สุงสุด</Text>
       					<Text style={[styles.texttt1]}>35 Lux</Text>
     				</SafeAreaView>
 					</View>

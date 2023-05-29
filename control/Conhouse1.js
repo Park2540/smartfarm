@@ -1,11 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { View, StyleSheet, Alert, Text, Image,TouchableHighlight, TouchableOpacity,ScrollView, } from 'react-native'
 import { color } from 'react-native-reanimated'
 import { ImageBackground } from 'react-native';
 import globalStyles from '../global-styles'
 import ConStyles from '../Con-Style'
 import axios from "axios";
-import { sendValueToFirebase2, database } from '../firebase/firbase';
+import { sendValueToFirebase3, database } from '../firebase/firbase';
 // import firbase from '../firebase/firbase'
 import {getDatabase,ref,set,update,onValue,remove,child,get} from "firebase/database";
 // import database from '@react-native-firebase/database';
@@ -14,7 +14,7 @@ const wait =(timeout) => {
 	return new Promise (resolve => setTimeout(resolve,timeout));
   }
 
-export default function ConDurian3({ route, navigation }){
+export default function Conhouse1 ({ route, navigation }){
     let [hasPermission, setHasPermission] = React.useState()
 	let [isTorchOn, setIsTorchOn] = React.useState(false)
 	let [bgColor, setBgColor] = React.useState('#cc0033')
@@ -24,6 +24,7 @@ export default function ConDurian3({ route, navigation }){
   const database = getDatabase();
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("");
   const [test1, setTest1] = useState("");
   const [test2, setTest2] = useState("");
   const [test3, setTest3] = useState("");
@@ -31,86 +32,67 @@ export default function ConDurian3({ route, navigation }){
   const [test5, setTest5] = useState("");
 
   //ตรวจสอบโหมดการทำงาน
-  const [mode,setTest6]= useState("");
+  const [mode,setMode1]= useState("");
 	// ตรวจสอบสถานะการทำงาน
   const [Valve,setTest7]= useState("");
+
+  
 //   ตรวจสอบค่าเซนเซอร์
-  setInterval(() => {
-    get(child(dbRef, `Node1/Sensor${username}`))
-  .then((snapshot) => {
-    if (snapshot.exists()) {
-    //    console.log(snapshot.val());
-      var test = snapshot.val();
-      setTest1(test["AirTemperature"]);
-      setTest2(test["Humidity"]);
-      setTest3(test["Light"]);
-      setTest4(test["Moisture"]);
-      setTest5(test["SoilTemperature"]);
+useEffect(() => {
+	const fetchData = async () => {
+	  try {
+		const snapshotSensor = await get(child(dbRef, `Node2/Sensor${username}`));
+		const snapshotMode = await get(child(dbRef, `Node2/Zone1${username}`));
+		const snapshotValve = await get(child(dbRef, `Node2/Valve${username}`));
+  
+		if (snapshotSensor.exists()) {
+		  const sensorData = snapshotSensor.val();
+		  setTest1(sensorData["AirTemperature"]);
+		  setTest2(sensorData["Humidity"]);
+		  setTest3(sensorData["Light"]);
+		  setTest4(sensorData["Moisture"]);
+		  setTest5(sensorData["SoilTemperature"]);
+		}
+  
+		if (snapshotMode.exists()) {
+		  const modeData = snapshotMode.val();
+		  setMode1(modeData["Mode"]);
+		}
 
-    }
-    else {
-    //   console.log("No data available");
-    }
-  })
-  .catch((error) => {
-    //console.error(error);
-  })
-
-}, 100);
-
-
-// ตรวจสอบค่าmode
-setInterval(() => {
-    get(child(dbRef, `Node1/Zone3${username}`))
-  .then((snapshot) => {
-    if (snapshot.exists()) {
-    //    console.log(snapshot.val());
-      var test = snapshot.val();
-      setTest6(test["Mode"]);
-
-    }
-    else {
-    //   console.log("No data available");
-    }
-  })
-  .catch((error) => {
-    //console.error(error);
-  })
-
-}, 100);
-
-// ตรวจสอบสถานะการทำงาน
-setInterval(() => {
-    get(child(dbRef, `Node1/Valve${username}`))
-  .then((snapshot) => {
-    if (snapshot.exists()) {
-    //    console.log(snapshot.val());
-      var test = snapshot.val();
-      setTest6(test["Valve"]);
-
-    }
-    else {
-    //   console.log("No data available");
-    }
-  })
-  .catch((error) => {
-    //console.error(error);
-  })
-
-}, 100);
-function readData() {
-    const starCountRef = ref(db, "users/" + username);
-    onValue(starCountRef, (snapshot) => {
-    //   const data = snapshot.val();
-      setEmail(data.email);
-    });
-  }
-  const [refreshing,setRefreshing] =useState(false);
-const onRefresh = () => {
-  setRefreshing(true);
-  wait(100).then(()=>
-  setRefreshing(false));
-}
+		if (snapshotValve.exists()) {
+		  const valveData = snapshotValve.val();
+		  setValve(valveData["Valve"]);
+		  // ตรวจสอบสถานะและอัปเดตสถานะที่ถูกแสดงผล
+		  if (valveData["Valve"] === "Zone_1_OFF") {
+			setStatus("Zone_1_OFF");
+		  } else if (valveData["Valve"] === "Zone_1_ON") {
+			setStatus("Zone_1_ON");
+		  }
+		}
+	  } catch (error) {
+		console.error(error);
+	  }
+	};
+  
+	const interval = setInterval(fetchData, 10);
+  
+	return () => clearInterval(interval);
+  }, []);
+  
+  
+// function readData() {
+//     const starCountRef = ref(db, "users/" + username);
+//     onValue(starCountRef, (snapshot) => {
+//     //   const data = snapshot.val();
+//       setEmail(data.email);
+//     });
+//   }
+// const [refreshing,setRefreshing] =useState(false);
+// const onRefresh = () => {
+//   setRefreshing(true);
+//   wait(100).then(()=>
+//   setRefreshing(false));
+// }
 
     return (
 		
@@ -125,9 +107,10 @@ const onRefresh = () => {
 		   <TouchableHighlight style={[styles.items,]}
 			   underlayColor='#00BE00'
 			   onPress={
-				   () => navigation.navigate('Setmode3')}
+				   () => navigation.navigate('Setmodehouse1')}
 		   >
-			<View style={styles.viewImgTextContainer}>
+			   
+			   <View style={styles.viewImgTextContainer}>
 				{mode === 'Normal mode' && (
 					<Text style={styles.buttonText}>โหมดปกติ</Text>
 				)}
@@ -138,18 +121,15 @@ const onRefresh = () => {
 					<Text style={styles.buttonText}>โหมดเซ็นเซอร์</Text>
 				)}
 				</View>
-			   
-			   {/* <View style={styles.viewImgTextContainer}>
-				   <Text style={styles.buttonText}>{mode}</Text>
-			   </View> */}
+
 		   </TouchableHighlight>
 
 		   <TouchableHighlight
 				style={[styles.button, { backgroundColor: `${bgColor}` }]}
 				onPress={async () => {
 					try {
-					const value = isTorchOn ? 'Zone_3_OFF' : 'Zone_3_ON';
-					await sendValueToFirebase2(value);
+					const value = isTorchOn ? 'Zone_1_OFF' : 'Zone_1_ON';
+					await sendValueToFirebase3(value);
 					setBgColor(isTorchOn ? '#cc0033' : '#00cc33');
 					setIsTorchOn(!isTorchOn);
 					} catch (error) {
@@ -166,13 +146,17 @@ const onRefresh = () => {
 
 
 		   <View style={{marginTop:10}}>
-			   <Text style={styles.buttonText2}>
+		   {/* <Text style={{ fontSize: 25, color: status === "Zone_1_OFF" ? "red" : "green" }}>
+  				{status === "Zone_1_OFF" ? "สถานะปิดการทำงาน" : "สถานะเปิดการทำงาน"}
+			</Text> */}
+			<Text style={styles.buttonText2}>
 					   {(isTorchOn) ? 'สถานะเปิดการทำงาน' : 'สถานะปิดการทำงาน'}
 			   </Text>
+			
 		   </View>
-		   {/* <View style={{marginTop:10}}>
+		   <View style={{marginTop:10}}>
 			   <Text></Text>
-		   </View> */}
+		   </View>
 		   <TouchableHighlight style={[styles.items3,]}>
 			   <View style={styles.viewImgTextContainer}>
 				   <Image source={require('../src/soil-analysis.png')} style={styles.img} />

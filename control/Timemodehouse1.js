@@ -17,7 +17,7 @@ import SettingStyles from "../Setting-Styles";
 // import { fonts } from "react-native-elements/dist/config";
 import { sendValueToFirebase, } from '../firebase/firbase';
 
-export default function Timemode1({ route, navigation }) {
+export default function Timemodehouse1({ route, navigation }) {
 
 
   var date_str = dayjs('2000-01-01').format('h:mm:ss A');
@@ -41,7 +41,7 @@ export default function Timemode1({ route, navigation }) {
     setStatus11_1(value);
 
     // Update the switch status in Firebase Realtime Database
-    set(ref(dbRef, `Node1/Zone1/ModeTime/1${username}/Status11_1`), status)
+    set(ref(dbRef, `Node2/Zone1/ModeTime/1${username}/Status11_1`), status)
       .then(() => {
         console.log("Switch status updated successfully");
       })
@@ -69,7 +69,7 @@ export default function Timemode1({ route, navigation }) {
 // ส่วนของการดึงข้อมูลจากตัวแปรต่างๆ
 useEffect(() => {
   // ดึงข้อมูล ModeTime จากฐานข้อมูล
-  const modeTimeRef3 = child(dbRef, `Node1/Zone1/ModeTime/1${username}/Status11_1`);
+  const modeTimeRef3 = child(dbRef, `Node2/Zone1/ModeTime/1${username}/Status11_1`);
   const unsubscribe3 = onValue(modeTimeRef3, (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
@@ -84,12 +84,12 @@ useEffect(() => {
   
   );
 
-  const modeTimeRef1 = child(dbRef, `Node1/Zone1/ModeTime/1${username}`);
+  const modeTimeRef1 = child(dbRef, `Node2/Zone1/ModeTime/1${username}`);
   const unsubscribe1 = onValue(modeTimeRef1, (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
-      seton1(data["Time11_1"]);
-      setoff1(data["Time11_2"]);
+      seton1(data["Time21_1"]);
+      setoff1(data["Time21_2"]);
       setday1(data["Day11_1"]);
     } else {
       console.log("No data available");
@@ -100,7 +100,7 @@ useEffect(() => {
   
   );
 
-const modeTimeRef2 = child(dbRef, `Node1/Zone1/ModeTime/2${username}`);
+const modeTimeRef2 = child(dbRef, `Node2/Zone1/ModeTime/2${username}`);
   const unsubscribe2 = onValue(modeTimeRef2, (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
@@ -130,18 +130,18 @@ const modeTimeRef2 = child(dbRef, `Node1/Zone1/ModeTime/2${username}`);
 
   // const [selectedDay, setSelectedDay] = useState('Sunday');
   const [showModaltime1, setShowModaltime1] = useState(false);
-  const [Time11_1, setTime1] = useState('');
-  const [Time11_2, setTime2] = useState('');
+  const [Time21_1, setTime1] = useState('');
+  const [Time21_2, setTime2] = useState('');
   const [Day11_1, selectedDay11_1] = useState('');
   
 
   function updateDatatime1() {
-    const path = `Node1/Zone1/ModeTime/1${String(username)}`;
+    const path = `Node2/Zone1/ModeTime/1${String(username)}`;
     const db = getDatabase();
     const dbRef = ref(db, path);
     update(dbRef, {
-      Time11_1: Time11_1,
-      Time11_2: Time11_2,
+      Time21_1: Time21_1,
+      Time21_2: Time21_2,
       Day11_1: Day11_1
     })
     .then(() => {
@@ -159,7 +159,7 @@ const modeTimeRef2 = child(dbRef, `Node1/Zone1/ModeTime/2${username}`);
   const [Day11_2, selectedDay11_2] = useState('');
 
   function updateDatatime2() {
-    const path = `Node1/Zone1/ModeTime/2${String(username)}`;
+    const path = `Node2/Zone1/ModeTime/2${String(username)}`;
     const db = getDatabase();
     const dbRef = ref(db, path);
     update(dbRef, {
@@ -295,7 +295,7 @@ const TimePicker = () => {
             <View>
               <Text style={styles.text}>เวลาเปิด</Text>
               <TextInput
-                value={Time11_1}
+                value={Time21_1}
                 onChangeText={setTime1} // Updated this line
                 style={SettingStyles.input}
                 placeholder="เวลาเปิด"
@@ -305,7 +305,7 @@ const TimePicker = () => {
             <View>
               <Text style={styles.text}>เวลาปิด</Text>
               <TextInput
-                value={Time11_2}
+                value={Time21_2}
                 onChangeText={setTime2} // Updated this line
                 style={SettingStyles.input}
                 placeholder="เวลาปิด"

@@ -45,6 +45,24 @@ const sendValueToFirebase2 = async (value) => {
     throw error;
   }
 };
+const sendValueToFirebase3 = async (value) => {
+  try {
+    await set(ref(database, '/Node2/Zone1/Valve'), value);
+    console.log('Value sent to Firebase');
+  } catch (error) {
+    console.error('Error sending value to Firebase: ', error);
+    throw error;
+  }
+};
+const sendValueToFirebase4 = async (value) => {
+  try {
+    await set(ref(database, '/Node2/Zone2/Valve'), value);
+    console.log('Value sent to Firebase');
+  } catch (error) {
+    console.error('Error sending value to Firebase: ', error);
+    throw error;
+  }
+};
 // ตั้งค่าsensorเพื่อเปิดปิดน้ำ
 // const setSensormode1 = async (value) => {
 //   try {
@@ -56,4 +74,4 @@ const sendValueToFirebase2 = async (value) => {
 //   }
 // };
 // const dbRef = firebase.database().ref();
-export { database, sendValueToFirebase,sendValueToFirebase1,sendValueToFirebase2, };
+export { database, sendValueToFirebase,sendValueToFirebase1,sendValueToFirebase2,sendValueToFirebase3,sendValueToFirebase4 };

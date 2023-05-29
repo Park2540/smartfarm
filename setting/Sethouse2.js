@@ -9,7 +9,7 @@ import '@react-native-firebase/database';
 import globalStyles from '../global-styles'
 import SettingStyles from '../Setting-Styles'
 
-export default function SetDurian1({route, navigation }) {
+export default function Sethouse2({route, navigation }) {
 
 	const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
@@ -54,7 +54,7 @@ export default function SetDurian1({route, navigation }) {
 
 
 	useEffect(() => {
-		const unsubscribe1 = onValue(child(dbRef, `Node1/Notification/AirTemperature${username}`), (snapshot) => {
+		const unsubscribe1 = onValue(child(dbRef, `Node2/Notification/AirTemperature${username}`), (snapshot) => {
 		  if (snapshot.exists()) {
 			const test = snapshot.val();
 			setAirTemperatureTest1(test["MaxAir"]);
@@ -62,7 +62,7 @@ export default function SetDurian1({route, navigation }) {
 			setResultTest1(test["Result"]);
 		  }
 		});
-		const unsubscribe2 = onValue(child(dbRef, `Node1/Notification/Humidity${username}`), (snapshot) => {
+		const unsubscribe2 = onValue(child(dbRef, `Node2/Notification/Humidity${username}`), (snapshot) => {
 		  if (snapshot.exists()) {
 			const test = snapshot.val();
 			setHumidityTest1(test["MaxHum"]);
@@ -70,7 +70,7 @@ export default function SetDurian1({route, navigation }) {
 			setResultTest2(test["Result"]);
 		  }
 		});
-		const unsubscribe3 = onValue(child(dbRef, `Node1/Notification/Light${username}`), (snapshot) => {
+		const unsubscribe3 = onValue(child(dbRef, `Node2/Notification/Light${username}`), (snapshot) => {
 		  if (snapshot.exists()) {
 			const test = snapshot.val();
 			setLightTest1(test["MaxLig"]);
@@ -78,7 +78,7 @@ export default function SetDurian1({route, navigation }) {
 			setResultTest3(test["Result"]);
 		  }
 		});
-		const unsubscribe4 = onValue(child(dbRef, `Node1/Notification/Moisture${username}`), (snapshot) => {
+		const unsubscribe4 = onValue(child(dbRef, `Node2/Notification/Moisture${username}`), (snapshot) => {
 		  if (snapshot.exists()) {
 			const test = snapshot.val();
 			setMoistureTest1(test["MaxMoi"]);
@@ -86,7 +86,7 @@ export default function SetDurian1({route, navigation }) {
 			setResultTest4(test["Result"]);
 		  }
 		});
-		const unsubscribe5 = onValue(child(dbRef, `Node1/Notification/SoilTemperature${username}`), (snapshot) => {
+		const unsubscribe5 = onValue(child(dbRef, `Node2/Notification/SoilTemperature${username}`), (snapshot) => {
 		  if (snapshot.exists()) {
 			const test = snapshot.val();
 			setSoilTemperatureTest1(test["MaxSoi"]);
@@ -111,7 +111,7 @@ export default function SetDurian1({route, navigation }) {
     const [MaxAir, SetmaxAir] = useState('');
 
 	function updateDataAir() {
-		const path = `Node1/Notification/AirTemperature${String(username)}`;
+		const path = `Node2/Notification/AirTemperature${String(username)}`;
 		const db = getDatabase();
 		const dbRef = ref(db, path);
 		update(dbRef, {
@@ -132,7 +132,7 @@ export default function SetDurian1({route, navigation }) {
     const [MinHum, SetminHum] = useState(''); 
     const [MaxHum, SetmaxHum] = useState('');
 	function updateDataHum() {
-        const path = `Node1/Notification/Humidity${String(username)}`;
+        const path = `Node2/Notification/Humidity${String(username)}`;
         const db = getDatabase();
         const dbRef = ref(db, path);
         update(dbRef, {
@@ -153,7 +153,7 @@ export default function SetDurian1({route, navigation }) {
     const [MinLig, SetminLig] = useState(''); 
     const [MaxLig, SetmaxLig] = useState('');
 	function updateDataLig() {
-        const path = `Node1/Notification/Light${String(username)}`;
+        const path = `Node2/Notification/Light${String(username)}`;
         const db = getDatabase();
         const dbRef = ref(db, path);
         update(dbRef, {
@@ -173,7 +173,7 @@ export default function SetDurian1({route, navigation }) {
     const [MinMoi, SetminMoi] = useState(''); 
     const [MaxMoi, SetmaxMoi] = useState('');
 	function updateDataMoi() {
-        const path = `Node1/Notification/Moisture${String(username)}`;
+        const path = `Node2/Notification/Moisture${String(username)}`;
         const db = getDatabase();
         const dbRef = ref(db, path);
         update(dbRef, {
@@ -193,7 +193,7 @@ export default function SetDurian1({route, navigation }) {
     const [MinSoi, SetminSoi] = useState(''); 
     const [MaxSoi, SetmaxSoi] = useState('');
 	  function updateDataSoi() {
-        const path = `Node1/Notification/SoilTemperature${String(username)}`;
+        const path = `Node2/Notification/SoilTemperature${String(username)}`;
         const db = getDatabase();
         const dbRef = ref(db, path);
         update(dbRef, {

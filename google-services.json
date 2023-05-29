@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "427165005080",
+    "firebase_url": "https://noi-farm-1072d-default-rtdb.firebaseio.com",
+    "project_id": "noi-farm-1072d",
+    "storage_bucket": "noi-farm-1072d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427165005080:android:85c430c61c02e857e51a6d",
+        "android_client_info": {
+          "package_name": "com.leetu.appfarm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427165005080-24vsmtjno5kfrqkr7j126t8cr0te5i2j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.leetu.appfarm",
+            "certificate_hash": "2af58846712183dcb9afd2e85064b786d891e3a9"
+          }
+        },
+        {
+          "client_id": "427165005080-noc90dc1v71e6t6cr9ln9i1phf7qaieh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.leetu.appfarm",
+            "certificate_hash": "277cb34949a68416e2e08cd67c17f825f8bbb6f1"
+          }
+        },
+        {
+          "client_id": "427165005080-52kq732behbr2ks0bvac5o867m4bnvm7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeSR8j5_wZIp2eMMuj5hDyFz01qkWmmjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "427165005080-52kq732behbr2ks0bvac5o867m4bnvm7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

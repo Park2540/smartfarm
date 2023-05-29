@@ -23,7 +23,7 @@ export default function Mainsetting({ navigation }) {
 			>
 				
 				<View style={styles.viewImgTextContainer}>
-					<Text style={styles.buttonText}>ตั้งค่าการแจ้งเตือนโซนทุเรียน 1</Text>
+					<Text style={styles.buttonText}>ทุเรียนโซน 1</Text>
 				</View>
 			</TouchableHighlight>
 
@@ -34,7 +34,7 @@ export default function Mainsetting({ navigation }) {
 			>
 				<View style={styles.viewImgTextContainer}>
 					
-					<Text style={styles.buttonText}>ตั้งค่าการแจ้งเตือนโซนทุเรียน 2</Text>
+					<Text style={styles.buttonText}>ทุเรียนโซน 2</Text>
 				</View>
 			</TouchableHighlight>
 
@@ -44,7 +44,25 @@ export default function Mainsetting({ navigation }) {
                     () => navigation.navigate('SetDurian3')}
 			>
 				<View style={styles.viewImgTextContainer}>
-					<Text style={styles.buttonText}>ตั้งค่าการแจ้งเตือนโซนทุเรียน 3</Text>
+					<Text style={styles.buttonText}>ทุเรียนโซน 3</Text>
+				</View>
+			</TouchableHighlight>
+			<TouchableHighlight style={[styles.items,]}
+				underlayColor='#00BE00'
+				onPress={
+                    () => navigation.navigate('Sethouse1')}
+			>
+				<View style={styles.viewImgTextContainer}>
+					<Text style={styles.buttonText}>โรงเรือน 1 </Text>
+				</View>
+			</TouchableHighlight>
+			<TouchableHighlight style={[styles.items,]}
+				underlayColor='#00BE00'
+				onPress={
+                    () => navigation.navigate('Sethouse2')}
+			>
+				<View style={styles.viewImgTextContainer}>
+					<Text style={styles.buttonText}>โรงเรือน 2 </Text>
 				</View>
 			</TouchableHighlight>
 

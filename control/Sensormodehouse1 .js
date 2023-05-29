@@ -10,7 +10,7 @@ import '@react-native-firebase/database';
 import globalStyles from '../global-styles'
 import SettingStyles from '../Setting-Styles'
 
-export default function Sensormode1({ route, navigation }){
+export default function Sensormodehouse1({ route, navigation }){
 
   const [isEnabled, setIsEnabled] = useState(false);
 
@@ -32,7 +32,7 @@ const toggleSwitch = () => {
 
     useEffect(() => {
       const intervalId = setInterval(() => {
-        get(child(dbRef, `Node1/Zone1/ModeSensor${username}`))
+        get(child(dbRef, `Node2/Zone1/ModeSensor${username}`))
           .then((snapshot) => {
             if (snapshot.exists()) {
               const test = snapshot.val();
@@ -64,7 +64,7 @@ const toggleSwitch = () => {
     const [Max, Setmax] = useState('');
 
     function updateData() {
-        const path = `Node1/Zone1/ModeSensor${String(username)}`;
+        const path = `Node2/Zone1/ModeSensor${String(username)}`;
         const db = getDatabase();
         const dbRef = ref(db, path);
         update(dbRef, {

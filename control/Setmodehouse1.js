@@ -6,7 +6,7 @@ import globalStyles from '../global-styles'
 import { sendValueToFirebase1, database } from '../firebase/firbase';
 import {getDatabase,ref,set,update,onValue,remove,child,get} from "firebase/database";
 
-export default function Setmode1({ route, navigation }){
+export default function Setmodehouse1({ route, navigation }){
 	const [isEnabled, setIsEnabled] = useState(false);
 //   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
@@ -26,7 +26,7 @@ const toggleSwitch = () => {
   setIsEnabled((previousState) => {
     setIsEnabled1(false);
     setMode(previousState ? "Normal mode" : "Time mode");
-    update(child(dbRef, `Node1/Zone1${username}`), { Mode: previousState ? "Normal mode" : "Time mode" });
+    update(child(dbRef, `Node2/Zone1${username}`), { Mode: previousState ? "Normal mode" : "Time mode" });
     return !previousState;
   });
 };
@@ -35,13 +35,13 @@ const toggleSwitch1 = () => {
   setIsEnabled1((previousState) => {
     setIsEnabled(false);
     setMode(previousState ? "Normal mode" : "Sensor mode");
-    update(child(dbRef, `Node1/Zone1${username}`), { Mode: previousState ? "Normal mode" : "Sensor mode" });
+    update(child(dbRef, `Node2/Zone1${username}`), { Mode: previousState ? "Normal mode" : "Sensor mode" });
     return !previousState;
   });
 };
 
   setInterval(() => {
-    get(child(dbRef, `Node1/Zone1${username}`))
+    get(child(dbRef, `Node2/Zone1${username}`))
   .then((snapshot) => {
     if (snapshot.exists()) {
     //    console.log(snapshot.val());
@@ -84,7 +84,7 @@ const toggleSwitch1 = () => {
             <TouchableHighlight  style={[styles.items3,]}
 				underlayColor='#00BE00'
 				onPress={
-                    () => navigation.navigate('Timemode1')}
+                    () => navigation.navigate('Timemodehouse1')}
 			>
 				
 				<View >
@@ -111,7 +111,7 @@ const toggleSwitch1 = () => {
             <TouchableHighlight  style={[styles.items3,]}
 				underlayColor='#00BE00'
 				onPress={
-                    () => navigation.navigate('Sensormode1')}
+                    () => navigation.navigate('Sensormodehouse1')}
 			>
 				<View >
 					<View style={styles.container1}>
