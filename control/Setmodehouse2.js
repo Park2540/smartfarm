@@ -108,7 +108,7 @@ const toggleSwitch1 = () => {
             <View style={{marginTop:10,}}>
                 <Text> {'\n'}</Text>
             </View>
-            <TouchableHighlight  style={[styles.items3,]}
+            {/* <TouchableHighlight  style={[styles.items3,]}
 				underlayColor='#00BE00'
 				onPress={
                     () => navigation.navigate('Sensormodehouse2')}
@@ -126,7 +126,7 @@ const toggleSwitch1 = () => {
 					<Image source={require('../src/soil-analysis.png')} style={styles.img} />
 					<Text style={styles.buttonText3}>โหมดเซ็นเซอร์</Text>
 				</View>
-			</TouchableHighlight>
+			</TouchableHighlight> */}
 			
 
             
