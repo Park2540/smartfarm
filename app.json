@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "appfarm",
-    "slug": "appfarm",
+    "name": "smartfarm",
+    "slug": "smartfarm",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
